@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Feedback</title>
+
+  <style>
+    /* General styling for the body and form */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .alert {
+      margin-top: 20px;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px 0;
+    }
+
+    .image-grid img {
+      width: 120px;
+      height: 80px;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  {% include "vehicle/navbar.html" %}
+
+  <div class="content">
+    <center>
+      <h3 class="alert alert-success">Send Us Your Feedback!</h3>
+
+      <form method="POST" class="w-50">
+        {% csrf_token %}
+        <div class="form-group">
+          <h3>{{ form.as_p }}</h3>
+          <input type="submit" value="Send Message" class="btn btn-primary btn-lg mt-3">
+        </div>
+      </form>
+    </center>
+
+    <!-- Image grid replacing the marquee -->
+    <div class="image-grid">
+      <img src="{% static 'images/ferrari.png' %}" alt="ferrari">
+      <img src="{% static 'images/ford.png' %}" alt="ford">
+      <img src="{% static 'images/lambo.png' %}" alt="lambo">
+      <img src="{% static 'images/mahindra.png' %}" alt="mahindra">
+      <img src="{% static 'images/tvs.png' %}" alt="tvs">
+      <img src="{% static 'images/tata.png' %}" alt="tata">
+      <img src="{% static 'images/hero.png' %}" alt="hero">
+      <img src="{% static 'images/rolls.png' %}" alt="rolls">
+      <img src="{% static 'images/suzuki.png' %}" alt="suzuki">
+    </div>
+  </div>
+
+  {% include "vehicle/footer.html" %}
+</body>
+
+</html>

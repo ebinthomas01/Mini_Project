@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mechanic Login</title>
+    <style media="screen">
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background: linear-gradient(120deg, #d3d3d3, #f0f0f0); /* Light grey gradient */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .box {
+        width: 400px;
+        padding: 40px;
+        background: #f8f9fa;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        border-radius: 10px;
+        transition: 0.25s;
+      }
+
+      .box input[type="text"],
+      .box input[type="password"] {
+        border: 1px solid #ced4da;
+        display: block;
+        margin: 15px auto;
+        text-align: center;
+        padding: 12px;
+        width: 100%;
+        border-radius: 5px;
+        transition: 0.25s;
+      }
+
+      .box h1 {
+        color: #343a40;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .box input[type="text"]:focus,
+      .box input[type="password"]:focus {
+        border-color: #495057;
+        background-color: #e9ecef;
+      }
+
+      .box input[type="submit"] {
+        border: 1px solid #4e73df;
+        background: #4e73df;
+        color: white;
+        padding: 12px 0;
+        width: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .box input[type="submit"]:hover {
+        background: #375a7f;
+      }
+
+      .text-muted {
+        color: #6c757d;
+        margin-bottom: 20px;
+      }
+
+      footer {
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    {% include "vehicle/navbar.html" %}
+    
+    <div class="container">
+      <div class="box">
+        <form method="post">
+          {% csrf_token %}
+          <h1>Mechanic Login</h1> 
+          <p class="text-muted">Please enter your login and password!</p>
+          {% render_field form.username class="form-control" placeholder="Username" %}
+          {% render_field form.password class="form-control" placeholder="Password" %}
+          <input type="submit" value="Login">
+        </form>
+      </div>
+    </div>
+
+    {% include "vehicle/footer.html" %}
+  </body>
+</html>
